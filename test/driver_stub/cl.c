@@ -2,21 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
-#ifndef CL_USE_DEPRECATED_OPENCL_1_0_APIS
-#define CL_USE_DEPRECATED_OPENCL_1_0_APIS
-#endif
-
-#ifndef CL_USE_DEPRECATED_OPENCL_1_1_APIS
-#define CL_USE_DEPRECATED_OPENCL_1_1_APIS
-#endif
+#include "icd_structs.h"
 
 // Need to rename all CL API functions to prevent ICD loader functions calling
 // themselves via the dispatch table. Include this before cl headers.
 #include "rename_api.h"
 
-#include <CL/cl.h>
-#include <platform/icd_test_log.h>
-#include "icd_structs.h"
+#include "CL/cl.h"
+#include "platform/icd_test_log.h"
 
 #define CL_PLATFORM_ICD_SUFFIX_KHR                  0x0920
 CL_API_ENTRY cl_int CL_API_CALL
@@ -88,7 +81,7 @@ clGetPlatformIDs(cl_uint           num_entries ,
                       platforms,
                       num_platforms);
     return_value = clIcdGetPlatformIDsKHR(num_entries, platforms, num_platforms);
-    test_icd_stub_log("Value returned: %d\n", return_value); 
+    test_icd_stub_log("Value returned: %d\n", return_value);
     return return_value;
 }
 
@@ -102,11 +95,11 @@ clGetPlatformInfo(cl_platform_id    platform,
     cl_int ret = CL_SUCCESS;
     const char *returnString = NULL;
     size_t returnStringLength = 0;
-    /*test_icd_stub_log("clGetPlatformInfo(%p, %u, %u, %p, %p)\n", 
-                      platform, 
-                      param_name, 
-                      param_value_size, 
-                      param_value, 
+    /*test_icd_stub_log("clGetPlatformInfo(%p, %u, %u, %p, %p)\n",
+                      platform,
+                      param_name,
+                      param_value_size,
+                      param_value,
                       param_value_size_ret);*/
 
     // validate the arguments
@@ -160,7 +153,6 @@ done:
     return ret;
 }
 
-
 /* Device APIs */
 CL_API_ENTRY cl_int CL_API_CALL
 clGetDeviceIDs(cl_platform_id   platform,
@@ -195,8 +187,6 @@ done:
     test_icd_stub_log("Value returned: %d\n", ret);
     return ret;
 }
-
-
 
 CL_API_ENTRY cl_int CL_API_CALL
 clGetDeviceInfo(cl_device_id    device,
@@ -237,7 +227,6 @@ clCreateSubDevices(cl_device_id in_device,
     return return_value;
 }
 
-
 CL_API_ENTRY cl_int CL_API_CALL
 clRetainDevice(cl_device_id device) CL_API_SUFFIX__VERSION_1_2
 {
@@ -247,17 +236,14 @@ clRetainDevice(cl_device_id device) CL_API_SUFFIX__VERSION_1_2
     return return_value;
 }
 
-
 CL_API_ENTRY cl_int CL_API_CALL
 clReleaseDevice(cl_device_id device) CL_API_SUFFIX__VERSION_1_2
-
 {
     cl_int return_value = CL_OUT_OF_RESOURCES;
     test_icd_stub_log("clReleaseDevice(%p)\n", device);
     test_icd_stub_log("Value returned: %d\n", return_value);
     return return_value;
 }
-
 
 /* Context APIs  */
 CL_API_ENTRY cl_context CL_API_CALL
@@ -288,7 +274,6 @@ clCreateContext(const cl_context_properties * properties,
     return obj;
 }
 
-
 CL_API_ENTRY cl_context CL_API_CALL
 clCreateContextFromType(const cl_context_properties * properties,
                         cl_device_type                device_type,
@@ -306,13 +291,13 @@ clCreateContextFromType(const cl_context_properties * properties,
                       errcode_ret);
     pfn_notify(NULL, NULL, 0, NULL);
 
-    test_icd_stub_log ("createcontext_callback(%p, %p, %u, %p)\n", 
-                       NULL, 
-                       NULL, 
-                       0, 
+    test_icd_stub_log ("createcontext_callback(%p, %p, %u, %p)\n",
+                       NULL,
+                       NULL,
+                       0,
                        NULL);
-    
-    test_icd_stub_log("Value returned: %p\n", 
+
+    test_icd_stub_log("Value returned: %p\n",
 		              obj);
     return obj;
 }
@@ -429,8 +414,6 @@ clGetCommandQueueInfo(cl_command_queue       command_queue ,
     return return_value;
 }
 
-
-
 /* Memory Object APIs */
 CL_API_ENTRY cl_mem CL_API_CALL
 clCreateBuffer(cl_context    context ,
@@ -494,7 +477,6 @@ clCreateImage(cl_context              context,
     return obj;
 }
 
-
 CL_API_ENTRY cl_mem CL_API_CALL
 clCreateImage2D(cl_context              context ,
                 cl_mem_flags            flags ,
@@ -514,7 +496,8 @@ clCreateImage2D(cl_context              context ,
                       image_width,
                       image_height,
                       image_row_pitch,
-                      host_ptr);
+                      host_ptr,
+                      errcode_ret);
 
     test_icd_stub_log("Value returned: %p\n", obj);
     return obj;
@@ -771,7 +754,6 @@ clCreateProgramWithBuiltInKernels(cl_context             context ,
     return obj;
 }
 
-
 CL_API_ENTRY cl_int CL_API_CALL
 clRetainProgram(cl_program  program) CL_API_SUFFIX__VERSION_1_0
 {
@@ -879,7 +861,6 @@ clLinkProgram(cl_context            context ,
     test_icd_stub_log("Value returned: %p\n", obj);
     return obj;
 }
-
 
 CL_API_ENTRY cl_int CL_API_CALL
 clUnloadPlatformCompiler(cl_platform_id  platform) CL_API_SUFFIX__VERSION_1_2
@@ -1387,7 +1368,6 @@ clEnqueueCopyBufferRect(cl_command_queue     command_queue ,
     return return_value;
 }
 
-
 CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueFillBuffer(cl_command_queue    command_queue ,
                     cl_mem              buffer ,
@@ -1415,7 +1395,6 @@ clEnqueueFillBuffer(cl_command_queue    command_queue ,
     return return_value;
 }
 
-
 CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueFillImage(cl_command_queue    command_queue ,
                    cl_mem              image ,
@@ -1440,7 +1419,6 @@ clEnqueueFillImage(cl_command_queue    command_queue ,
     test_icd_stub_log("Value returned: %d\n", return_value);
     return return_value;
 }
-
 
 CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueReadImage(cl_command_queue      command_queue ,
@@ -1691,7 +1669,6 @@ clEnqueueMigrateMemObjects(cl_command_queue        command_queue ,
     return return_value;
 }
 
-
 CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueNDRangeKernel(cl_command_queue  command_queue ,
                        cl_kernel         kernel ,
@@ -1837,7 +1814,6 @@ clSetPrintfCallback(cl_context           context ,
     test_icd_stub_log("Value returned: %d\n", return_value);
     return return_value;
 }
-
 
 CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueMarker(cl_command_queue     command_queue ,

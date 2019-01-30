@@ -1,6 +1,9 @@
-#include <CL/cl.h>
+#include <stdlib.h>
+
 #include "param_struct.h"
-#include <platform/icd_test_log.h>
+
+#include "CL/cl.h"
+#include "platform/icd_test_log.h"
 
 extern cl_mem buffer;
 extern cl_command_queue command_queue;
@@ -162,7 +165,6 @@ int test_clEnqueueReadBufferRect(const struct clEnqueueReadBufferRect_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueWriteBufferRect(const struct clEnqueueWriteBufferRect_st *data)
@@ -229,7 +231,6 @@ int test_clEnqueueFillBuffer(const struct clEnqueueFillBuffer_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueCopyBuffer(const struct clEnqueueCopyBuffer_st *data)
@@ -258,7 +259,6 @@ int test_clEnqueueCopyBuffer(const struct clEnqueueCopyBuffer_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueCopyBufferRect(const struct clEnqueueCopyBufferRect_st *data)
@@ -295,7 +295,6 @@ int test_clEnqueueCopyBufferRect(const struct clEnqueueCopyBufferRect_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueMapBuffer(const struct clEnqueueMapBuffer_st *data)
@@ -329,7 +328,6 @@ int test_clEnqueueMapBuffer(const struct clEnqueueMapBuffer_st *data)
     free(return_value);
 
     return 0;
-
 }
 
 int test_clRetainMemObject(const struct clRetainMemObject_st *data)
@@ -341,7 +339,6 @@ int test_clRetainMemObject(const struct clRetainMemObject_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clSetMemObjectDestructorCallback(const struct clSetMemObjectDestructorCallback_st *data)
@@ -358,7 +355,6 @@ int test_clSetMemObjectDestructorCallback(const struct clSetMemObjectDestructorC
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueUnmapMemObject(const struct clEnqueueUnmapMemObject_st *data)
@@ -381,9 +377,7 @@ int test_clEnqueueUnmapMemObject(const struct clEnqueueUnmapMemObject_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
-
 
 int test_clGetMemObjectInfo (const struct clGetMemObjectInfo_st *data)
 {
@@ -458,4 +452,3 @@ int test_buffer_object()
 
     return 0;
 }
-

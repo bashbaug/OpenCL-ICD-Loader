@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 The Khronos Group Inc.
+ * Copyright (c) 2016-2019 The Khronos Group Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software source and associated documentation files (the "Materials"),
@@ -50,8 +50,8 @@
 #define CL_USE_DEPRECATED_OPENCL_1_2_APIS
 #endif
 
-#include <CL/cl.h>
-#include <CL/cl_ext.h>
+#include "CL/cl.h"
+#include "CL/cl_ext.h"
 
 #ifdef _WIN32
 #include <tchar.h>

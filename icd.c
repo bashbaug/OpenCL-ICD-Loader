@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 The Khronos Group Inc.
+ * Copyright (c) 2016-2019 The Khronos Group Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software source and associated documentation files (the "Materials"),
@@ -61,7 +61,7 @@ void khrIcdVendorAdd(const char *libraryName)
     KHRicdVendor *vendorIterator = NULL;
 
     // require that the library name be valid
-    if (!libraryName) 
+    if (!libraryName)
     {
         goto Done;
     }
@@ -154,7 +154,7 @@ void khrIcdVendorAdd(const char *libraryName)
             CL_PLATFORM_ICD_SUFFIX_KHR,
             suffixSize,
             suffix,
-            NULL);            
+            NULL);
         if (CL_SUCCESS != result)
         {
             free(suffix);
@@ -163,7 +163,7 @@ void khrIcdVendorAdd(const char *libraryName)
 
         // allocate a structure for the vendor
         vendor = (KHRicdVendor*)malloc(sizeof(*vendor) );
-        if (!vendor) 
+        if (!vendor)
         {
             free(suffix);
             KHR_ICD_TRACE("failed to allocate memory\n");
@@ -173,7 +173,7 @@ void khrIcdVendorAdd(const char *libraryName)
 
         // populate vendor data
         vendor->library = khrIcdOsLibraryLoad(libraryName);
-        if (!vendor->library) 
+        if (!vendor->library)
         {
             free(suffix);
             free(vendor);
@@ -222,7 +222,7 @@ void khrIcdContextPropertiesGetPlatform(const cl_context_properties *properties,
         if ((cl_context_properties)CL_CONTEXT_PLATFORM == property[0])
         {
             *outPlatform = (cl_platform_id)property[1];
-        }    
+        }
     }
 }
 

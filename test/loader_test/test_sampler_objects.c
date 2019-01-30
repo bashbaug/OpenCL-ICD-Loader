@@ -1,6 +1,7 @@
-#include <CL/cl.h>
 #include "param_struct.h"
-#include <platform/icd_test_log.h>
+
+#include "CL/cl.h"
+#include "platform/icd_test_log.h"
 
 extern cl_sampler  sampler;
 int ret_val;
@@ -14,7 +15,6 @@ const struct clGetSamplerInfo_st clGetSamplerInfoData[NUM_ITEMS_clGetSamplerInfo
 {
     { NULL, 0, 0, NULL, NULL }
 };
-
 
 int test_clRetainSampler(const struct clRetainSampler_st *data)
 {
@@ -61,4 +61,3 @@ int test_sampler_objects()
 
     return 0;
 }
-

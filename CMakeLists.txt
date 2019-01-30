@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8)
 
 project (OPENCL_ICD_LOADER)
 
@@ -65,6 +65,7 @@ else()
     endif ()
 endif ()
 
+target_compile_definitions (OpenCL PRIVATE CL_TARGET_OPENCL_VERSION=220)
 target_link_libraries (OpenCL ${CMAKE_DL_LIBS})
 
 enable_testing()

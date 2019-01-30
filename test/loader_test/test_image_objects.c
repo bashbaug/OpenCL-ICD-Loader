@@ -1,6 +1,9 @@
-#include <CL/cl.h>
+#include <stdlib.h>
+
 #include "param_struct.h"
-#include <platform/icd_test_log.h>
+
+#include "CL/cl.h"
+#include "platform/icd_test_log.h"
 
 extern cl_mem image;
 extern cl_context  context;
@@ -64,7 +67,7 @@ int test_clGetSupportedImageFormats(const struct clGetSupportedImageFormats_st *
                      data->num_entries,
                      data->image_formats,
                      data->num_image_formats);
-    
+
     ret_val = clGetSupportedImageFormats(context,
                                     data->flags,
                                     data->image_type,
@@ -75,7 +78,6 @@ int test_clGetSupportedImageFormats(const struct clGetSupportedImageFormats_st *
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueCopyImageToBuffer(const struct clEnqueueCopyImageToBuffer_st *data)
@@ -104,7 +106,6 @@ int test_clEnqueueCopyImageToBuffer(const struct clEnqueueCopyImageToBuffer_st *
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueCopyBufferToImage(const struct clEnqueueCopyBufferToImage_st *data)
@@ -133,7 +134,6 @@ int test_clEnqueueCopyBufferToImage(const struct clEnqueueCopyBufferToImage_st *
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueMapImage(const struct clEnqueueMapImage_st *data)
@@ -171,7 +171,6 @@ int test_clEnqueueMapImage(const struct clEnqueueMapImage_st *data)
     free(return_value);
 
     return 0;
-
 }
 
 int test_clEnqueueReadImage(const struct clEnqueueReadImage_st *data)
@@ -180,7 +179,7 @@ int test_clEnqueueReadImage(const struct clEnqueueReadImage_st *data)
                      command_queue,
                      image,
                      data->blocking_read,
-                     data->origin,            
+                     data->origin,
                      data->region,
                      data->row_pitch,
                      data->slice_pitch,
@@ -193,18 +192,17 @@ int test_clEnqueueReadImage(const struct clEnqueueReadImage_st *data)
                             image,
                             data->blocking_read,
                             data->origin,
-                            data->region, 
-                            data->row_pitch,  
-                            data->slice_pitch, 
-                            data->ptr,       
-                            data->num_events_in_wait_list,  
+                            data->region,
+                            data->row_pitch,
+                            data->slice_pitch,
+                            data->ptr,
+                            data->num_events_in_wait_list,
                             data->event_wait_list,
                             &event);
 
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueWriteImage(const struct clEnqueueWriteImage_st *data)
@@ -237,7 +235,6 @@ int test_clEnqueueWriteImage(const struct clEnqueueWriteImage_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clEnqueueFillImage(const struct clEnqueueFillImage_st *data)
@@ -249,22 +246,21 @@ int test_clEnqueueFillImage(const struct clEnqueueFillImage_st *data)
                      data->origin,
                      data->region,
                      data->num_events_in_wait_list,
-                     data->event_wait_list, 
+                     data->event_wait_list,
                      &event);
 
     ret_val = clEnqueueFillImage(command_queue,
-                            image,    
+                            image,
                             data->fill_color,
                             data->origin,
                             data->region,
                             data->num_events_in_wait_list,
-                            data->event_wait_list, 
+                            data->event_wait_list,
                             &event);
 
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 int test_clEnqueueCopyImage(const struct clEnqueueCopyImage_st *data)
 {
@@ -276,7 +272,7 @@ int test_clEnqueueCopyImage(const struct clEnqueueCopyImage_st *data)
                      data->dst_origin,
                      data->region,
                      data->num_events_in_wait_list,
-                     data->event_wait_list, 
+                     data->event_wait_list,
                      &event);
 
     ret_val = clEnqueueCopyImage(command_queue,
@@ -286,15 +282,13 @@ int test_clEnqueueCopyImage(const struct clEnqueueCopyImage_st *data)
                             data->dst_origin,
                             data->region,
                             data->num_events_in_wait_list,
-                            data->event_wait_list, 
+                            data->event_wait_list,
                             &event);
 
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
-
 
 int test_clGetImageInfo(const struct clGetImageInfo_st *data)
 {
@@ -314,7 +308,6 @@ int test_clGetImageInfo(const struct clGetImageInfo_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_image_objects()
@@ -358,5 +351,4 @@ int test_image_objects()
     }
 
     return 0;
-
 }

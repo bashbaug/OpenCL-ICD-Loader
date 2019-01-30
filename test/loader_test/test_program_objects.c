@@ -1,6 +1,7 @@
-#include <CL/cl.h>
 #include "param_struct.h"
-#include <platform/icd_test_log.h>
+
+#include "CL/cl.h"
+#include "platform/icd_test_log.h"
 
 extern cl_context context;
 extern cl_program program;
@@ -62,7 +63,6 @@ int test_clRetainProgram(const struct clRetainProgram_st *data)
                     ret_val);
 
     return 0;
-
 }
 
 int test_clBuildProgram(const struct clBuildProgram_st *data)
@@ -85,7 +85,6 @@ int test_clBuildProgram(const struct clBuildProgram_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clCompileProgram(const struct clCompileProgram_st *data)
@@ -113,7 +112,6 @@ int test_clCompileProgram(const struct clCompileProgram_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clLinkProgram(const struct clLinkProgram_st *data)
@@ -143,7 +141,6 @@ int test_clLinkProgram(const struct clLinkProgram_st *data)
     test_icd_app_log("Value returned: %p\n", program);
 
     return 0;
-
 }
 
 int test_clUnloadPlatformCompiler(const struct clUnloadPlatformCompiler_st *data)
@@ -155,14 +152,13 @@ int test_clUnloadPlatformCompiler(const struct clUnloadPlatformCompiler_st *data
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clGetExtensionFunctionAddressForPlatform(const struct clGetExtensionFunctionAddressForPlatform_st *data)
 {
     void *return_value;
     test_icd_app_log("clGetExtensionFunctionAddressForPlatform(%p, %p)\n",
-                     platform,  
+                     platform,
                      data->func_name);
 
     return_value=clGetExtensionFunctionAddressForPlatform(platform,
@@ -171,7 +167,6 @@ int test_clGetExtensionFunctionAddressForPlatform(const struct clGetExtensionFun
     test_icd_app_log("Value returned: %p\n", return_value);
 
     return 0;
-
 }
 
 int test_clGetProgramInfo(const struct clGetProgramInfo_st *data)
@@ -192,7 +187,6 @@ int test_clGetProgramInfo(const struct clGetProgramInfo_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_clGetProgramBuildInfo(const struct clGetProgramBuildInfo_st *data)
@@ -215,7 +209,6 @@ int test_clGetProgramBuildInfo(const struct clGetProgramBuildInfo_st *data)
     test_icd_app_log("Value returned: %d\n", ret_val);
 
     return 0;
-
 }
 
 int test_program_objects()
@@ -224,7 +217,7 @@ int test_program_objects()
 
     for (i=0;i<NUM_ITEMS_clRetainProgram;i++)   {
         test_clRetainProgram(&clRetainProgramData[i]);
-    }    
+    }
 
     for (i=0;i<NUM_ITEMS_clBuildProgram;i++)    {
         test_clBuildProgram(&clBuildProgramData[i]);
@@ -255,6 +248,4 @@ int test_program_objects()
     }
 
     return 0;
-
 }
-

@@ -1,9 +1,9 @@
-#include<sys/stat.h>
-#include<stdlib.h>
-#include<stdio.h>
-#include<stdarg.h>
-#include<CL/cl.h>
-#include<platform/icd_test_log.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
+#include "platform/icd_test_log.h"
 
 #define APP_LOG_FILE  "icd_test_app_log.txt"
 #define STUB_LOG_FILE "icd_test_stub_log.txt"
@@ -15,10 +15,10 @@ int test_icd_initialize_app_log(void)
 {
     app_log_file = fopen(APP_LOG_FILE, "w");
     if (!app_log_file) {
-		printf("Unable to open file %s\n", APP_LOG_FILE);
+        printf("Unable to open file %s\n", APP_LOG_FILE);
         return -1;
     }
-    
+
     return 0;
 }
 
@@ -37,14 +37,13 @@ void test_icd_app_log(const char *format, ...)
 
 int test_icd_initialize_stub_log(void)
 {
-   	stub_log_file = fopen(STUB_LOG_FILE, "w");
+    stub_log_file = fopen(STUB_LOG_FILE, "w");
     if (!stub_log_file) {
-		printf("Unable to open file %s\n", STUB_LOG_FILE);
+        printf("Unable to open file %s\n", STUB_LOG_FILE);
         return -1;
     }
-    
-    return 0;
 
+    return 0;
 }
 
 void test_icd_close_stub_log(void)

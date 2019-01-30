@@ -3,7 +3,8 @@
 #ifndef __APPLE__
 #include <malloc.h>
 #endif
-#include <platform/icd_test_log.h>
+
+#include "platform/icd_test_log.h"
 
 int test_icd_match()
 {
@@ -35,4 +36,3 @@ End:
     free(stub_log);
     return error;
 }
-

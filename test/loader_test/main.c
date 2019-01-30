@@ -1,7 +1,7 @@
-#include<stdio.h>
-#include<CL/cl.h>
-#include<platform/icd_test_log.h>
-#include "param_struct.h"
+#include <stdio.h>
+
+#include "CL/cl.h"
+#include "platform/icd_test_log.h"
 
 extern int test_create_calls();
 extern int test_platforms();
@@ -11,11 +11,11 @@ extern int test_buffer_object();
 extern int test_program_objects();
 extern int test_image_objects();
 extern int test_sampler_objects();
-extern int initialize_log();
-extern int test_icd_match();
-
 extern int test_OpenGL_share();
-extern int test_Direct3D10_share();
+//extern int test_Direct3D10_share();
+extern int test_release_calls();
+
+extern int test_icd_match();
 
 int main(int argc, char **argv)
 {
@@ -31,12 +31,12 @@ int main(int argc, char **argv)
     test_image_objects();
     test_sampler_objects();
     test_OpenGL_share();
-
 //    test_Direct3D10_share();
     test_release_calls();
+
     test_icd_close_app_log();
     test_icd_close_stub_log();
-    
+
     if (test_icd_match()) {
         printf("ICD Loader Test FAILED\n");
         return 1;
