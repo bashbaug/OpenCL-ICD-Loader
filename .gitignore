@@ -3,4 +3,4 @@ inc/CL/
 inc/EGL/
 inc/KHR/
 build/
-external/
+external/googletest
