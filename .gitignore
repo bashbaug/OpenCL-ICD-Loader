@@ -1,4 +1,6 @@
+.vscode/
 inc/CL/
 inc/EGL/
 inc/KHR/
 build/
+external/

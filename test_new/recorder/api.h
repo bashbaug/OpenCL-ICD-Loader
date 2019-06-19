@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2016-2019 The Khronos Group Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * OpenCL is a trademark of Apple Inc. used under license by Khronos.
+ */
+#pragma once
+
+#define CL_USE_DEPRECATED_OPENCL_1_0_APIS
+#define CL_USE_DEPRECATED_OPENCL_1_1_APIS
+#define CL_USE_DEPRECATED_OPENCL_1_2_APIS
+#define CL_USE_DEPRECATED_OPENCL_2_0_APIS
+#define CL_TARGET_OPENCL_VERSION 220
+
+#include <CL/cl.h>
+#include <CL/cl_ext.h>
+#include <CL/cl_ext_intel.h>
+
+#include "api_generated.h"
+
+// The standard APIs should be automatically generated, but any extra
+// APIs can be manually added here.
