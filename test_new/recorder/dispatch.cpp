@@ -87,22 +87,22 @@ static KHRicdVendorDispatch g_sDispatch =
     recclEnqueueWaitForEvents,
     recclEnqueueBarrier,
     recclGetExtensionFunctionAddress,
-    nullptr, //recclCreateFromGLBuffer,
-    nullptr, //recclCreateFromGLTexture2D,
-    nullptr, //recclCreateFromGLTexture3D,
-    nullptr, //recclCreateFromGLRenderbuffer,
-    nullptr, //recclGetGLObjectInfo,
-    nullptr, //recclGetGLTextureInfo,
-    nullptr, //recclEnqueueAcquireGLObjects,
-    nullptr, //recclEnqueueReleaseGLObjects,
-    nullptr, //recclGetGLContextInfoKHR,
+    NULL, //recclCreateFromGLBuffer,
+    NULL, //recclCreateFromGLTexture2D,
+    NULL, //recclCreateFromGLTexture3D,
+    NULL, //recclCreateFromGLRenderbuffer,
+    NULL, //recclGetGLObjectInfo,
+    NULL, //recclGetGLTextureInfo,
+    NULL, //recclEnqueueAcquireGLObjects,
+    NULL, //recclEnqueueReleaseGLObjects,
+    NULL, //recclGetGLContextInfoKHR,
 
-    nullptr, //recclGetDeviceIDsFromD3D10KHR,
-    nullptr, //recclCreateFromD3D10BufferKHR,
-    nullptr, //recclCreateFromD3D10Texture2DKHR,
-    nullptr, //recclCreateFromD3D10Texture3DKHR,
-    nullptr, //recclEnqueueAcquireD3D10ObjectsKHR,
-    nullptr, //recclEnqueueReleaseD3D10ObjectsKHR,
+    NULL, //recclGetDeviceIDsFromD3D10KHR,
+    NULL, //recclCreateFromD3D10BufferKHR,
+    NULL, //recclCreateFromD3D10Texture2DKHR,
+    NULL, //recclCreateFromD3D10Texture3DKHR,
+    NULL, //recclEnqueueAcquireD3D10ObjectsKHR,
+    NULL, //recclEnqueueReleaseD3D10ObjectsKHR,
 
     recclSetEventCallback,
     recclCreateSubBuffer,
@@ -113,11 +113,11 @@ static KHRicdVendorDispatch g_sDispatch =
     recclEnqueueWriteBufferRect,
     recclEnqueueCopyBufferRect,
 
-    nullptr, //recclCreateSubDevicesEXT,
+    NULL, //recclCreateSubDevicesEXT,
     recclRetainDevice,     // clRetainDeviceEXT
     recclReleaseDevice,    // clReleaseDeviceEXT
 
-    nullptr, //recclCreateEventFromGLsyncKHR,
+    NULL, //recclCreateEventFromGLsyncKHR,
 
     recclCreateSubDevices,
     recclRetainDevice,
@@ -134,25 +134,25 @@ static KHRicdVendorDispatch g_sDispatch =
     recclEnqueueMarkerWithWaitList,
     recclEnqueueBarrierWithWaitList,
     recclGetExtensionFunctionAddressForPlatform,
-    nullptr, //recclCreateFromGLTexture,
+    NULL, //recclCreateFromGLTexture,
 
-    nullptr, //recclGetDeviceIDsFromD3D11KHR,
-    nullptr, //recclCreateFromD3D11BufferKHR,
-    nullptr, //recclCreateFromD3D11Texture2DKHR,
-    nullptr, //recclCreateFromD3D11Texture3DKHR,
-    nullptr, //recclCreateFromDX9MediaSurfaceKHR,
-    nullptr, //recclEnqueueAcquireD3D11ObjectsKHR,
-    nullptr, //recclEnqueueReleaseD3D11ObjectsKHR,
+    NULL, //recclGetDeviceIDsFromD3D11KHR,
+    NULL, //recclCreateFromD3D11BufferKHR,
+    NULL, //recclCreateFromD3D11Texture2DKHR,
+    NULL, //recclCreateFromD3D11Texture3DKHR,
+    NULL, //recclCreateFromDX9MediaSurfaceKHR,
+    NULL, //recclEnqueueAcquireD3D11ObjectsKHR,
+    NULL, //recclEnqueueReleaseD3D11ObjectsKHR,
 
-    nullptr, //recclGetDeviceIDsFromDX9MediaAdapterKHR,
-    nullptr, //recclEnqueueAcquireDX9MediaSurfacesKHR,
-    nullptr, //recclEnqueueReleaseDX9MediaSurfacesKHR,
+    NULL, //recclGetDeviceIDsFromDX9MediaAdapterKHR,
+    NULL, //recclEnqueueAcquireDX9MediaSurfacesKHR,
+    NULL, //recclEnqueueReleaseDX9MediaSurfacesKHR,
 
-    nullptr, //recclCreateFromEGLImageKHR,
-    nullptr, //recclEnqueueAcquireEGLObjectsKHR,
-    nullptr, //recclEnqueueReleaseEGLObjectsKHR,
+    NULL, //recclCreateFromEGLImageKHR,
+    NULL, //recclEnqueueAcquireEGLObjectsKHR,
+    NULL, //recclEnqueueReleaseEGLObjectsKHR,
 
-    nullptr, //recclCreateEventFromEGLSyncKHR,
+    NULL, //recclCreateEventFromEGLSyncKHR,
 
     recclCreateCommandQueueWithProperties,
     recclCreatePipe,
@@ -168,7 +168,7 @@ static KHRicdVendorDispatch g_sDispatch =
     recclSetKernelArgSVMPointer,
     recclSetKernelExecInfo,
 
-    nullptr, //recclGetKernelSubGroupInfoKHR,
+    NULL, //recclGetKernelSubGroupInfoKHR,
 
     recclCloneKernel,
     recclCreateProgramWithIL,
@@ -184,7 +184,7 @@ static KHRicdVendorDispatch g_sDispatch =
 
 // Helper macro for making objects of the specified type:
 #define MAKE_OBJECT( _type, _name ) \
-    static struct _##_type _s##_name   { &g_sDispatch };   \
+    static struct _##_type _s##_name = { &g_sDispatch };    \
     _type _name = &_s##_name;
 
 MAKE_OBJECT( cl_platform_id,    g_Platform      );
