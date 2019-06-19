@@ -26,7 +26,7 @@ if (BUILD_TESTING)
     message(STATUS "Found Google Mock, building tests.")
   else()
     message(STATUS "Did not find googletest, tests will not be built. "
-      "To enable tests place googletest in '<spirv-dir>/external/googletest'.")
+      "To enable tests place googletest in '<top-dir>/external/googletest'.")
   endif()
 endif()
 

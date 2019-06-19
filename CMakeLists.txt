@@ -103,10 +103,10 @@ add_definitions (-DCL_TARGET_OPENCL_VERSION=220)
 target_include_directories (OpenCL PRIVATE loader)
 target_link_libraries (OpenCL ${CMAKE_DL_LIBS})
 
-add_subdirectory (external)
-
 include (CTest)
 if (BUILD_TESTING)
+    set(CMAKE_CXX_STANDARD 11)
+    add_subdirectory (external)
     add_subdirectory (test)
     add_subdirectory (test_new)
 endif()
