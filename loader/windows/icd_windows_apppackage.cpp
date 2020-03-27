@@ -36,7 +36,12 @@ using namespace Microsoft::WRL::Wrappers;
 
 extern "C" bool khrIcdOsVendorsEnumerateAppPackage()
 {
-    if (FAILED(Windows::Foundation::Initialize()))
+    HRESULT hrInit = Windows::Foundation::Initialize(RO_INIT_MULTITHREADED);
+    if (hrInit == RPC_E_CHANGED_MODE)
+    {
+        hrInit = Windows::Foundation::Initialize(RO_INIT_SINGLETHREADED);
+    }
+    if (FAILED(hrInit))
     {
         KHR_ICD_TRACE("Failed to init WinRT\n");
         return false;
