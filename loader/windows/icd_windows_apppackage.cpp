@@ -31,6 +31,18 @@ extern "C"
 #include <locale>
 #include <codecvt>
 
+template <typename F>
+struct ScopeExit {
+    ScopeExit(F&& f) : f(std::forward<F>(f)) {}
+    ~ScopeExit() { f(); }
+    F f;
+};
+
+template <typename F>
+inline ScopeExit<F> MakeScopeExit(F&& f) {
+    return ScopeExit<F>(std::forward<F>(f));
+};
+
 using namespace Microsoft::WRL;
 using namespace Microsoft::WRL::Wrappers;
 
@@ -46,6 +58,10 @@ extern "C" bool khrIcdOsVendorsEnumerateAppPackage()
         KHR_ICD_TRACE("Failed to init WinRT\n");
         return false;
     }
+    auto Cleanup = MakeScopeExit([]()
+        {
+            Windows::Foundation::Uninitialize();
+        });
 
     using ABI::Windows::Management::Deployment::IPackageManager;
     ComPtr<IPackageManager> packageManager;
