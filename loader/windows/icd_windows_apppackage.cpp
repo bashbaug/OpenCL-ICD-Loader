@@ -129,7 +129,7 @@ extern "C" bool khrIcdOsVendorsEnumerateAppPackage()
         }
 
         HString path;
-        if (FAILED(item->get_Path(path.ReleaseAndGetAddressOf())))
+        if (FAILED(item->get_Path(path.GetAddressOf())))
         {
             KHR_ICD_TRACE("Failed to get path\n");
             continue;
